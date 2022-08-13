@@ -1,6 +1,5 @@
-# Assignemnt 1
-
-## When a user enters an URL in the browser, how does the browser fetch the desired result
+# Assignment 1
+When a user enters an URL in the browser, how does the browser fetch the desired result
 
 ## The browser's main functionality 
 The main function of a browser is to present the web resource you choose, by requesting it from the server and displaying it in the browser window. The resource is usually an HTML document, but may also be a PDF, image, or some other type of content. The location of the resource is specified by the user using a URI (Uniform Resource Identifier).
@@ -30,7 +29,7 @@ The browser's main components are:
 
 It is important to note that browsers such as Chrome run multiple instances of the rendering engine: one for each tab. Each tab runs in a separate process.
 
-![Browser components](/assets/images/browser_components.png)
+![Browser components](./assets/images/browser_components.png)
 
 ## The rendering engine
 
@@ -48,4 +47,4 @@ The rendering engine will start getting the contents of the requested document f
 
 After that, this is the basic flow of the rendering engine:
 
-![Rendering Engine Basic Flow](/assets/images/rendering_engine_basic_flow.avif)
+![Rendering Engine Basic Flow](./assets/images/rendering_engine_basic_flow.avif)
