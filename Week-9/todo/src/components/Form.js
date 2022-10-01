@@ -26,7 +26,7 @@ export default function Form(props){
           autoComplete="off"
           onChange={handleChange}
         />
-        <button type="submit" className="btn btn__primary btn__lg">
+        <button type="submit" className="btn btn__primary btn__lg add_button">
           Add
         </button>
       </form>
