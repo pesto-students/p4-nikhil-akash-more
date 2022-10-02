@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import FilterButton from "./components/FilterButton";
 import Form from "./components/Form";
 import ToDo from "./components/ToDo";
@@ -11,9 +11,24 @@ const FILTER_MAP = {
 }
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
+function usePrevious(value){
+  const ref = useRef();
+  useEffect(() =>{
+      ref.current = value;
+  });
+  return ref.current;
+}
+
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
   const [filter, setFilter] = useState('All');
+  const listHeadingRef = useRef(null);
+  const prevTaskLength = usePrevious(tasks.length);
+  useEffect(() => {
+    if(prevTaskLength - tasks.length === 1){
+      listHeadingRef.current.focus();
+    }
+  },[tasks.length, prevTaskLength]);
   const toggleTaskCompleted = (id) => {
     const updatedTasks = tasks.map(task => {
       if (id === task.id) {
@@ -28,6 +43,10 @@ function App(props) {
     setTasks([...tasks, newTask]);
   }
   const editTask = (id, newName) => {
+    if(newName.trim() === ''){
+      alert('Please enter a task name');
+      return;
+    }
     const updatedTasks = tasks.map(task => {
       if (task.id === id) {
         return { ...task, name: newName }
@@ -57,7 +76,7 @@ function App(props) {
       <div className="filters btn-group stack-exception">
         {filterList}
       </div>
-      <h2 id="list-heading">
+      <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>
         {headingText}
       </h2>
       <ul
