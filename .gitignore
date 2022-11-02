@@ -1,0 +1,5 @@
+# Local Netlify folder
+.netlify
+Week-9/todo/.netlify
+Week-9/todo/node_modules
+Week-9/todo/build
